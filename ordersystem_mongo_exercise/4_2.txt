@@ -1,0 +1,18 @@
+db.customer.aggregate([
+    {
+        $group: {
+            _id: "$customer_zipcode",  // Group by postal code
+            numberOfCustomers: { $sum: 1 }  // Count the number of customers for each postal code
+        }
+    },
+    {
+        $match: {
+            numberOfCustomers: { $gt: 1 }  // Filter out postal codes with only one customer
+        }
+    },
+    {
+        $sort: {
+            numberOfCustomers: -1  // Sort in descending order (from large to small)
+        }
+    }
+])

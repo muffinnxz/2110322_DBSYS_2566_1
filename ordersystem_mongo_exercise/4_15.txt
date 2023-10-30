@@ -1,0 +1,9 @@
+db.customer.deleteOne({ customer_id: 10001 });
+
+db.orders_w_lines.deleteMany({ customer_id: 10001 });
+
+db.customer.find();
+
+db.product.find();
+
+db.orders_w_lines.find();

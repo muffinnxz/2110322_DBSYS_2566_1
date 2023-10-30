@@ -1,0 +1,21 @@
+db.customer.aggregate([
+    {
+        $lookup: {
+            from: "orders_w_lines",
+            localField: "customer_id",
+            foreignField: "customer_id",
+            as: "matchingOrders"
+        }
+    },
+    {
+        $match: {
+            "matchingOrders": { $eq: [] }  // Filter customers with no matching orders
+        }
+    },
+    {
+        $project: {
+            customer_id: 1,
+            customer_name: 1
+        }
+    }
+])

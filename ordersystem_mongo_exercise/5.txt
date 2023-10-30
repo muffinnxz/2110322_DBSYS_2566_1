@@ -1,0 +1,1 @@
+I probably embedding all the customer data to all the collection that contain customer_id because the cutomer data aren't that huge but it will definitely help querying easier
